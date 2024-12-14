@@ -18,16 +18,12 @@ public class GetQuestionFromQuiz {
 	@RequestMapping("/GetQuestions/{title}")
 	public ResponseEntity<?> getQuestionsFromQuiz(@PathVariable String title)
 	{
-		System.out.println("In GetQuestionsm harsha");
-		String name="Harsha";
 		RestTemplate rest=new RestTemplate();
-		/*
-		 * String
-		 * name1=rest.getForObject("http://localhost:8011/getQuestionsforQuiz",String.
-		 * class);
-		 */
-		System.out.println("title"+title);
-		return new ResponseEntity<>(rest.getForObject("http://localhost:8011/getquestions/"+title,String.class),HttpStatus.ACCEPTED);
+		String respose=rest.getForObject("http://localhost:8011/getquestions/"+title,String.class);
+		
+		
+		
+		return new ResponseEntity<>(respose,HttpStatus.ACCEPTED);
 	}
 	
 }

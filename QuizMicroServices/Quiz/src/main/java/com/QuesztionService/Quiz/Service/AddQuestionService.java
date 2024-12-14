@@ -16,9 +16,9 @@ import com.QuesztionService.Quiz.Repo.AddQuestionRepo;
 public class AddQuestionService {
 	@Autowired
 	AddQuestionRepo addrepo;
-	public AddQuestionsmodel savequestions(AddQuestionsmodel add)
+	public List<AddQuestionsmodel> savequestions(List<AddQuestionsmodel> add)
 	{
-		return addrepo.save(add);
+		return  addrepo.saveAll(add);
 	}
 public List<AddQuestionsmodel> getquestions()
 {
