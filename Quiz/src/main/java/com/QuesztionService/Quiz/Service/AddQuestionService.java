@@ -16,9 +16,9 @@ import com.QuesztionService.Quiz.Repo.AddQuestionRepo;
 public class AddQuestionService {
 	@Autowired
 	AddQuestionRepo addrepo;
-	public AddQuestionsmodel savequestions(AddQuestionsmodel add)
+	public List<AddQuestionsmodel> savequestions(List<AddQuestionsmodel> add)
 	{
-		return addrepo.save(add);
+		return  addrepo.saveAll(add);
 	}
 public List<AddQuestionsmodel> getquestions()
 {
@@ -39,7 +39,7 @@ public Optional<List<AddQuestionsmodel>> getquestionsbytitle(String title)
 
 	return list;
 }
-public int validateService(List<SubmitforvalidationBean> SubmitforvalidationBeanobj,String Title)
+public String validateService(List<SubmitforvalidationBean> SubmitforvalidationBeanobj,String Title)
 {
 	Optional<List<AddQuestionsmodel>> list=addrepo.getquestions(Title);
 	List<AddQuestionsmodel> list1=list.get();
@@ -61,7 +61,7 @@ public int validateService(List<SubmitforvalidationBean> SubmitforvalidationBean
 		
 	}
 	
-	return Count;
+	return "Result after validation: "+Count;
 }
 
 }
